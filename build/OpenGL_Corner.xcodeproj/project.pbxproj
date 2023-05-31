@@ -1,0 +1,1037 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		90D810D9E25E481E90C845CA /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0F8E49DC90EB49F390231CDF /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				158566CF80FE73719E2FF823 /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		AEBEF684477F48949D75D044 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5E48CFE648BB49A8AD67191A /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				8EC8382A649CF13261C63C4A /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				48564A40F6AF423D9201D8D7 /* PBXTargetDependency */,
+				9B5FFA42867542098D73213E /* PBXTargetDependency */,
+				902BB681491C4674871FFC78 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		5651F823562B49B0BC311B8B /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E6D0CC540934D49A974BC4D /* glad.c */; };
+		6409C34508944018AC7D541C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 626A37D4480340A99338E7F9 /* main.cpp */; };
+		E0849E6B2A271C2600FFDF2F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0849E6A2A271C2600FFDF2F /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3202A404E5E24E6695DEEF97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6427F0A5F9D045388F36D84C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D810D9E25E481E90C845CA;
+			remoteInfo = ZERO_CHECK;
+		};
+		41F85B908CCD46F99070D839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6427F0A5F9D045388F36D84C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0218F64FDEA42B3B3F48DD5;
+			remoteInfo = GLAD;
+		};
+		8A6CCE5C39FA47508081E13F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6427F0A5F9D045388F36D84C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 432824CC31D14AC3927CC8C9;
+			remoteInfo = OpenGL_Corner;
+		};
+		F058AA12F7164472BE6A5C31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6427F0A5F9D045388F36D84C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0218F64FDEA42B3B3F48DD5;
+			remoteInfo = GLAD;
+		};
+		F4B67D3269F44522A5A4C879 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6427F0A5F9D045388F36D84C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D810D9E25E481E90C845CA;
+			remoteInfo = ZERO_CHECK;
+		};
+		FCE7FBFCD3A143AFB00DFD0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6427F0A5F9D045388F36D84C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D810D9E25E481E90C845CA;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E6D0CC540934D49A974BC4D /* glad.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = glad.c; path = lib/glad.c; sourceTree = SOURCE_ROOT; };
+		3EDC23832D63485C972AB59C /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		626A37D4480340A99338E7F9 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		6E60BE7C00D24CFB81EE7926 /* OpenGL_Corner */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = OpenGL_Corner; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BAF52B0DF744C1FBF58D75F /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		8C2D9423EF4E4C0EA71B28F2 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		AFAE5B7FF7E642918D9B3D75 /* libGLAD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGLAD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0849E6A2A271C2600FFDF2F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8FA54F5106934727861E3B7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D136CEC0680047C19ED5BBF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0849E6B2A271C2600FFDF2F /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0CD7B13F80AB48828FA37126 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		1620BFDBBB1C4087A7CE424F /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				626A37D4480340A99338E7F9 /* main.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		4DC3C2727AE14EF99AE05732 = {
+			isa = PBXGroup;
+			children = (
+				EE0516CAAF5E4484B8ABFC0A /* OpenGL_Corner */,
+				614A221750EA42BDB60B7E6A /* GLAD */,
+				5D3038835D03424A90C4DCE6 /* ALL_BUILD */,
+				E69CC0E8A83D42E58479BC37 /* Products */,
+				ECAEDEEA710F4AE4BE56BBCB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5D3038835D03424A90C4DCE6 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7B13F80AB48828FA37126 /* CMake Rules */,
+				8C2D9423EF4E4C0EA71B28F2 /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		614A221750EA42BDB60B7E6A /* GLAD */ = {
+			isa = PBXGroup;
+			children = (
+				D020999D60D54B8DBFB7C702 /* Source Files */,
+				8BAF52B0DF744C1FBF58D75F /* CMakeLists.txt */,
+			);
+			name = GLAD;
+			sourceTree = "<group>";
+		};
+		D020999D60D54B8DBFB7C702 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E6D0CC540934D49A974BC4D /* glad.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		E69CC0E8A83D42E58479BC37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFAE5B7FF7E642918D9B3D75 /* libGLAD.a */,
+				6E60BE7C00D24CFB81EE7926 /* OpenGL_Corner */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ECAEDEEA710F4AE4BE56BBCB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0849E6A2A271C2600FFDF2F /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE0516CAAF5E4484B8ABFC0A /* OpenGL_Corner */ = {
+			isa = PBXGroup;
+			children = (
+				1620BFDBBB1C4087A7CE424F /* Source Files */,
+				3EDC23832D63485C972AB59C /* CMakeLists.txt */,
+			);
+			name = OpenGL_Corner;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		432824CC31D14AC3927CC8C9 /* OpenGL_Corner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF6BD42B907946FF803524E5 /* Build configuration list for PBXNativeTarget "OpenGL_Corner" */;
+			buildPhases = (
+				DFAA4F8AF0084D8BB1C94157 /* Sources */,
+				D136CEC0680047C19ED5BBF1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A69B60863658483E802A2197 /* PBXTargetDependency */,
+				11BA0F6EBD2D4F25A21A3332 /* PBXTargetDependency */,
+			);
+			name = OpenGL_Corner;
+			productName = OpenGL_Corner;
+			productReference = 6E60BE7C00D24CFB81EE7926 /* OpenGL_Corner */;
+			productType = "com.apple.product-type.tool";
+		};
+		B0218F64FDEA42B3B3F48DD5 /* GLAD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1878343519CC469DA158B3FD /* Build configuration list for PBXNativeTarget "GLAD" */;
+			buildPhases = (
+				B46302860558463E96B2EEE6 /* Sources */,
+				8FA54F5106934727861E3B7B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FB9493120704A6F8B3A55F7 /* PBXTargetDependency */,
+			);
+			name = GLAD;
+			productName = GLAD;
+			productReference = AFAE5B7FF7E642918D9B3D75 /* libGLAD.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6427F0A5F9D045388F36D84C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1420;
+			};
+			buildConfigurationList = F6B1214D21994F07874EDE95 /* Build configuration list for PBXProject "OpenGL_Corner" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4DC3C2727AE14EF99AE05732;
+			projectDirPath = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner;
+			projectRoot = "";
+			targets = (
+				AEBEF684477F48949D75D044 /* ALL_BUILD */,
+				B0218F64FDEA42B3B3F48DD5 /* GLAD */,
+				432824CC31D14AC3927CC8C9 /* OpenGL_Corner */,
+				90D810D9E25E481E90C845CA /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		158566CF80FE73719E2FF823 /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+				/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeFiles/ZERO_CHECK,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build\n  make -f /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build\n  make -f /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build\n  make -f /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build\n  make -f /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeScripts/ReRunCMake.make\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8EC8382A649CF13261C63C4A /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+				/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeFiles/ALL_BUILD,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build\n  echo Build\\ all\\ projects\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B46302860558463E96B2EEE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5651F823562B49B0BC311B8B /* glad.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFAA4F8AF0084D8BB1C94157 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6409C34508944018AC7D541C /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		11BA0F6EBD2D4F25A21A3332 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D810D9E25E481E90C845CA /* ZERO_CHECK */;
+			targetProxy = F4B67D3269F44522A5A4C879 /* PBXContainerItemProxy */;
+		};
+		48564A40F6AF423D9201D8D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0218F64FDEA42B3B3F48DD5 /* GLAD */;
+			targetProxy = 41F85B908CCD46F99070D839 /* PBXContainerItemProxy */;
+		};
+		5FB9493120704A6F8B3A55F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D810D9E25E481E90C845CA /* ZERO_CHECK */;
+			targetProxy = FCE7FBFCD3A143AFB00DFD0C /* PBXContainerItemProxy */;
+		};
+		902BB681491C4674871FFC78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D810D9E25E481E90C845CA /* ZERO_CHECK */;
+			targetProxy = 3202A404E5E24E6695DEEF97 /* PBXContainerItemProxy */;
+		};
+		9B5FFA42867542098D73213E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 432824CC31D14AC3927CC8C9 /* OpenGL_Corner */;
+			targetProxy = 8A6CCE5C39FA47508081E13F /* PBXContainerItemProxy */;
+		};
+		A69B60863658483E802A2197 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0218F64FDEA42B3B3F48DD5 /* GLAD */;
+			targetProxy = F058AA12F7164472BE6A5C31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0D1A02FEF1C84E35A13FD9B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/Release;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GLFW,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GL,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/glad,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/KHR,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"$(inherited)",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GLAD;
+				SECTORDER_FLAGS = "";
+				TARGET_TEMP_DIR = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build/GLAD.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		0E741486DE374B2FAA8E8DFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/Release;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GLFW,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GL,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/glad,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/KHR,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/opt/homebrew/lib/libglfw.dylib,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/Release/libGLAD.a,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = OpenGL_Corner;
+				SECTORDER_FLAGS = "";
+				TARGET_TEMP_DIR = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build/OpenGL_Corner.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		15C13D7783574117AED9D160 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		1C0B449650034ADDA60087D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/Debug;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GLFW,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GL,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/glad,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/KHR,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "    $(inherited)";
+				OTHER_LIBTOOLFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GLAD;
+				SECTORDER_FLAGS = "";
+				TARGET_TEMP_DIR = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build/GLAD.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		3F4DE2F344C546F4A848195D /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build;
+			};
+			name = RelWithDebInfo;
+		};
+		600624A31B694024B396A6BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build;
+			};
+			name = Release;
+		};
+		6A7ACDBF7B61453EAB650F09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		6DCCF3739D05468BB6121511 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/RelWithDebInfo;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GLFW,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GL,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/glad,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/KHR,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"$(inherited)",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GLAD;
+				SECTORDER_FLAGS = "";
+				TARGET_TEMP_DIR = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build/GLAD.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		82BDD0BEA9C746A190B1438D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		8362014663F3418F82FB54F6 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/MinSizeRel;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GLFW,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GL,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/glad,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/KHR,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/opt/homebrew/lib/libglfw.dylib,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/MinSizeRel/libGLAD.a,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = OpenGL_Corner;
+				SECTORDER_FLAGS = "";
+				TARGET_TEMP_DIR = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build/OpenGL_Corner.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		9224E2F3369A4067A5F56AF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk;
+				SYMROOT = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build;
+			};
+			name = Debug;
+		};
+		9829C5DD1304420BB706075A /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build;
+			};
+			name = MinSizeRel;
+		};
+		AF5FD62A6E8043F88F2F382B /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/MinSizeRel;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GLFW,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GL,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/glad,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/KHR,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"$(inherited)",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GLAD;
+				SECTORDER_FLAGS = "";
+				TARGET_TEMP_DIR = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build/GLAD.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		C82CE50ECD0E446391268DC2 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		DCF2547F34FE469DA179F158 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		DDEDFDAC6D3D4101A0B56D9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/Debug;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GLFW,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GL,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/glad,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/KHR,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "   ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/opt/homebrew/lib/libglfw.dylib,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/Debug/libGLAD.a,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = OpenGL_Corner;
+				SECTORDER_FLAGS = "";
+				TARGET_TEMP_DIR = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build/OpenGL_Corner.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		E9B030A7052C45CF9A10E3F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		ECA046CD814441BB8982805C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		F4BDE5A7E0F54DAA8EA74828 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		FBB324F7882C4717968FCDEF /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/RelWithDebInfo;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GLFW,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/GL,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/glad,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/include/KHR,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/lib,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/opt/homebrew/lib/libglfw.dylib,
+					/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/RelWithDebInfo/libGLAD.a,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = OpenGL_Corner;
+				SECTORDER_FLAGS = "";
+				TARGET_TEMP_DIR = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/build/OpenGL_Corner.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F8E49DC90EB49F390231CDF /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82BDD0BEA9C746A190B1438D /* Debug */,
+				6A7ACDBF7B61453EAB650F09 /* Release */,
+				DCF2547F34FE469DA179F158 /* MinSizeRel */,
+				F4BDE5A7E0F54DAA8EA74828 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1878343519CC469DA158B3FD /* Build configuration list for PBXNativeTarget "GLAD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C0B449650034ADDA60087D9 /* Debug */,
+				0D1A02FEF1C84E35A13FD9B5 /* Release */,
+				AF5FD62A6E8043F88F2F382B /* MinSizeRel */,
+				6DCCF3739D05468BB6121511 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5E48CFE648BB49A8AD67191A /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECA046CD814441BB8982805C /* Debug */,
+				E9B030A7052C45CF9A10E3F4 /* Release */,
+				15C13D7783574117AED9D160 /* MinSizeRel */,
+				C82CE50ECD0E446391268DC2 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BF6BD42B907946FF803524E5 /* Build configuration list for PBXNativeTarget "OpenGL_Corner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDEDFDAC6D3D4101A0B56D9A /* Debug */,
+				0E741486DE374B2FAA8E8DFF /* Release */,
+				8362014663F3418F82FB54F6 /* MinSizeRel */,
+				FBB324F7882C4717968FCDEF /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F6B1214D21994F07874EDE95 /* Build configuration list for PBXProject "OpenGL_Corner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9224E2F3369A4067A5F56AF6 /* Debug */,
+				600624A31B694024B396A6BA /* Release */,
+				9829C5DD1304420BB706075A /* MinSizeRel */,
+				3F4DE2F344C546F4A848195D /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6427F0A5F9D045388F36D84C /* Project object */;
+}

@@ -1,0 +1,4 @@
+/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeFiles/OpenGL_Corner.dir
+/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeFiles/GLAD.dir
+/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeFiles/ALL_BUILD.dir
+/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/build/CMakeFiles/ZERO_CHECK.dir

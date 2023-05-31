@@ -1,0 +1,11 @@
+Target dependency graph (4 targets)
+ZERO_CHECK in OpenGL_Corner, no dependencies
+GLAD in OpenGL_Corner, depends on:
+ZERO_CHECK in OpenGL_Corner (explicit)
+OpenGL_Corner in OpenGL_Corner, depends on:
+GLAD in OpenGL_Corner (explicit)
+ZERO_CHECK in OpenGL_Corner (explicit)
+ALL_BUILD in OpenGL_Corner, depends on:
+GLAD in OpenGL_Corner (explicit)
+OpenGL_Corner in OpenGL_Corner (explicit)
+ZERO_CHECK in OpenGL_Corner (explicit)
