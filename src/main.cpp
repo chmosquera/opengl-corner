@@ -82,12 +82,12 @@ void InitShaders(void) {
     };
         
     // Generate array and buffers
-    glGenVertexArraysAPPLE(1, &vao_id);     // vertex array, to bind vertex attr such as vbo and ebo
+    glGenVertexArrays(1, &vao_id);
     glGenBuffers(1, &vbo_id);               // vertex buffer, to store vertex data
     glGenBuffers(1, &ebo_id);               // element buffer, to store indices
 
     // Bind and configure the vertex array object for later use
-    glBindVertexArrayAPPLE(vao_id);
+    glBindVertexArray(vao_id);
     
     
     // Copy data to the buffer and configures GPU to manage data
@@ -159,9 +159,9 @@ int main(int argc, char *argv[]) {
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
        glUseProgram(shaderProgram_id);
-       glBindVertexArrayAPPLE(vao_id);
-       glDrawArrays(GL_TRIANGLES, 0, 3);
-//       glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+       glBindVertexArray(vao_id);
+//       glDrawArrays(GL_TRIANGLES, 0, 3);
+       glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
        
        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
        // -------------------------------------------------------------------------------
@@ -171,6 +171,7 @@ int main(int argc, char *argv[]) {
 
    // glfw: terminate, clearing all previously allocated GLFW resources.
    glfwTerminate();
+    glDeleteProgram(shaderProgram_id);
    return 0;
 }
 
