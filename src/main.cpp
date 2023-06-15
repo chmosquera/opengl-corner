@@ -5,6 +5,7 @@
 #include <OpenGL/gl.h>
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <cmath>
 
 
 const char *vertexShaderSource = "#version 410 core\n"
@@ -16,9 +17,12 @@ const char *vertexShaderSource = "#version 410 core\n"
 
 const char *fragShaderSource = "#version 410 core\n"
 "out vec4 FragColor;\n"
+"uniform float uTime;\n"
+"uniform vec4 uColor;\n"
 "void main()\n"
 "{\n"
-"    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"    float time = uTime;\n"
+"    FragColor = vec4(sin(time), 0.5f, 0.2f, 1.0f);\n"
 "}\0";
 
 unsigned int shaderProgram_id, vao_id, vbo_id, ebo_id;
@@ -36,7 +40,7 @@ void InitShaders(void) {
 
     // Check if shader compile is successful
     int success;
-    char infoLog[512];
+    GLchar infoLog[512];
     glGetShaderiv(vShader_id, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(vShader_id, 512, nullptr, infoLog);
@@ -49,11 +53,14 @@ void InitShaders(void) {
     glShaderSource(fShader_id, 1, &fragShaderSource, nullptr);
     glCompileShader(fShader_id);
 
+    
     glGetShaderiv(fShader_id, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(vShader_id, 512, nullptr, infoLog);
         std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+        printf("Error no: %d\n", glGetError());
     }
+    
 
     // Link the shaders to a shader program
     shaderProgram_id = glCreateProgram();
@@ -63,12 +70,14 @@ void InitShaders(void) {
     glGetProgramiv(shaderProgram_id, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(shaderProgram_id, 512, nullptr, infoLog);
+        std::cout << "ERROR::PROGRAM::LINK_FAILED\n" << infoLog << std::endl;
     }
-
+    
     // Delete the shader objects after linking them to program
     glDeleteShader(vShader_id);
     glDeleteShader(fShader_id);
-
+    
+    
     float vertices[] = {
          0.5f,  0.5f, 0.0f,  // top right
          0.5f, -0.5f, 0.0f,  // bottom right
@@ -115,7 +124,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 int main(int argc, char *argv[]) {
-
+    
     // glfw - initialize and configure
    glfwInit();
    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -136,6 +145,7 @@ int main(int argc, char *argv[]) {
    }
    glfwMakeContextCurrent(window);
    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    
 
    // Glad - load all OpenGL function pointers
    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -143,6 +153,9 @@ int main(int argc, char *argv[]) {
        std::cout << "Failed to initialize GLAD" << std::endl;
        return -1;
    }
+    
+    // Call after loading OpenGL context
+    printf("OpenGL version is (%s)\n", glGetString(GL_VERSION));
 
     InitShaders();
     
@@ -159,8 +172,28 @@ int main(int argc, char *argv[]) {
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
        glUseProgram(shaderProgram_id);
+       
+       // Update uniform in shader program
+       auto uTime_loc = glGetUniformLocation(shaderProgram_id, "uTime");   // Uniform name is defined in shader
+       if (uTime_loc == -1) {
+           std::cout << "ERROR: Could not find uniform location in shader program'" << shaderProgram_id << "'\n";
+       }
+       glUniform1f(uTime_loc, glfwGetTime());   // Shader program must be used via glUseProgram()
+
+       
+//       int uColor_loc = glGetUniformLocation(shaderProgram_id, "uColor");
+//       if (uColor_loc == -1) {
+//          std::cout << "ERROR: Could not find uniform location in shader program'" << shaderProgram_id << "'\n";
+//      }
+//       glUniform4f(uColor_loc, 1.0, 1.0, sin(glfwGetTime()), 1.0);
+       
+       double  timeValue = glfwGetTime();
+       float greenValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
+       int vertexColorLocation = glGetUniformLocation(shaderProgram_id, "uColor");
+       glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+       
+       // Draw triangle
        glBindVertexArray(vao_id);
-//       glDrawArrays(GL_TRIANGLES, 0, 3);
        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
        
        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
