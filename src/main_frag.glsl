@@ -1,5 +1,7 @@
 #version 410 core
 
+in vec4 vPos;
+
 out vec4 FragColor;
 
 uniform float uTime;
@@ -7,5 +9,5 @@ uniform float uTime;
 
 void main() {
     float time = uTime;
-    FragColor = vec4(sin(time), 0.5f, 0.2f, 1.0f);
+    FragColor = vPos;
 }

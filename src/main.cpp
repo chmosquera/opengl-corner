@@ -7,24 +7,28 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <cmath>
-#include "shader-loader.hpp"
+#include "shader-loader.h"
+#include "stb_image.h"
 
 using namespace Core;
 
-unsigned int vao_id, vbo_id, ebo_id;
+unsigned int vao_id, vbo_id, tex_id, ebo_id;
+
+std::string root_folder = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner";
 
 void InitGeom(void) {
     
     float vertices[] = {
-         0.5f,  0.5f, 0.0f,  // top right
-         0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left
+        // pos                  // tex coords   // color
+        -0.5f, -0.5f, 0.0f,     0.0f, 0.0f,     1.0f, 0.0f, 0.0f,   // bottom-left (red)
+        0.5f, -0.5f, 0.0f,      1.0f, 0.0f,     0.0f, 1.0f, 0.0f,   // bottom-right (green)
+        0.5f, 0.5f, 0.0f,       1.0f, 1.0f,     0.0f, 0.0f, 1.0f,   // top-right (blue)
+        -0.5f, 0.5f, 0.0f,      0.0f, 1.0f,     0.0f, 0.0f, 0.0f    // top-left (black)
     };
 
     unsigned int indices[] = {
-        0, 1, 3,  // first Triangle
-        1, 2, 3   // second Triangle
+        0, 1, 2,  // first Triangle
+        2, 3, 0   // second Triangle
     };
         
     // Generate array and buffers
@@ -45,6 +49,35 @@ void InitGeom(void) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_id);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
+}
+
+void InitTexture(const char* path){
+    
+    // Load image
+    int width, height, channel_cnt;
+    unsigned char *data = stbi_load(path, &width, &height, &channel_cnt, 0);
+    if (data == NULL) {
+        printf("Failed to load texture '%s'", data);
+        return;
+    }
+    
+    // Generate texture
+    glGenTextures(1, &tex_id); // Generate 1 texture and store in uint array
+    glBindTexture(GL_TEXTURE_2D, tex_id);
+    
+    // Texture coordinates S,T
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    //glGenerateMipmap(GL_TEXTURE_2D); // optional if you use the base mipmap via glTexImage2D
+    
+    
+    
+    // Clean up
+    stbi_image_free(data);    
 }
 
 
@@ -91,13 +124,24 @@ int main(int argc, char *argv[]) {
     
     
     InitGeom();
+    InitTexture("/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/Assets/zebra.png");
     
-    Shader mainShader = Shader("/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src/main_vert.glsl", "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src/main_frag.glsl");
+    Shader mainShader = Shader("/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src/texture_vert.glsl", "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src/texture_frag.glsl");
     
     // Link the vertex attributes to the vertex shader
+    // index: attr location, size: value, stride: length of vertex data, pointer: offset.
     GLint aPosAttr = glGetAttribLocation(mainShader.GetID(), "aPos");
-    glVertexAttribPointer(aPosAttr, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(aPosAttr, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(aPosAttr);
+    
+    GLint aTexCoords = glGetAttribLocation(mainShader.GetID(), "aTexCoords");
+    glVertexAttribPointer(aTexCoords, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(aTexCoords);
+
+    
+    GLint aColor = glGetAttribLocation(mainShader.GetID(), "aColor");
+    glVertexAttribPointer(aColor, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
+    glEnableVertexAttribArray(aColor);
     
     glEnable(GL_DEPTH_TEST);
     
@@ -113,23 +157,15 @@ int main(int argc, char *argv[]) {
 
        mainShader.Use();
        
-       // Update uniform in shader program
-       mainShader.SetUniform1f("uTime", glfwGetTime());
-
+       // Bind VAO
+       glBindVertexArray(vao_id);
        
-//       int uColor_loc = glGetUniformLocation(shaderProgram_id, "uColor");
-//       if (uColor_loc == -1) {
-//          std::cout << "ERROR: Could not find uniform location in shader program'" << shaderProgram_id << "'\n";
-//      }
-//       glUniform4f(uColor_loc, 1.0, 1.0, sin(glfwGetTime()), 1.0);
-       
-       double  timeValue = glfwGetTime();
-       float greenValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
-       int vertexColorLocation = glGetUniformLocation(mainShader.GetID(), "uColor");
-       glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+       // Bind texture
+       glActiveTexture(GL_TEXTURE0);
+       glBindTexture(GL_TEXTURE_2D, tex_id);
+       glEnable(GL_TEXTURE_2D);
        
        // Draw triangle
-       glBindVertexArray(vao_id);
        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
        
        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)

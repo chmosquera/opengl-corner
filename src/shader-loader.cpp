@@ -5,7 +5,7 @@
 //  Created by Chanelle Mosquera on 6/15/23.
 //
 
-#include "shader-loader.hpp"
+#include "shader-loader.h"
 
 using namespace Core;
 
