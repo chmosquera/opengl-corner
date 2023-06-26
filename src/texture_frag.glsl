@@ -19,6 +19,5 @@ void main() {
     
     // Set pixel color
     FragColor = texture(uTexture, vTexCoords);
-//    FragColor = vec4(0.0f);
 
 }

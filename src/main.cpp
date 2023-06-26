@@ -53,6 +53,9 @@ void InitGeom(void) {
 
 void InitTexture(const char* path){
     
+    stbi_set_flip_vertically_on_load(true); // Set before stbi_load
+
+    
     // Load image
     int width, height, channel_cnt;
     unsigned char *data = stbi_load(path, &width, &height, &channel_cnt, 0);
@@ -71,9 +74,8 @@ void InitTexture(const char* path){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_BGRA, GL_UNSIGNED_BYTE, data);
     //glGenerateMipmap(GL_TEXTURE_2D); // optional if you use the base mipmap via glTexImage2D
-    
     
     
     // Clean up
