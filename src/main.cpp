@@ -9,6 +9,9 @@
 #include <cmath>
 #include "shader-loader.h"
 #include "stb_image.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 using namespace Core;
 
@@ -112,7 +115,7 @@ int main(int argc, char *argv[]) {
    }
    glfwMakeContextCurrent(window);
    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    
+
 
    // Glad - load all OpenGL function pointers
    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -120,33 +123,34 @@ int main(int argc, char *argv[]) {
        std::cout << "Failed to initialize GLAD" << std::endl;
        return -1;
    }
-    
+
     // Call after loading OpenGL context
     printf("OpenGL version is (%s)\n", glGetString(GL_VERSION));
-    
-    
+
+
     InitGeom();
+    
     InitTexture("/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/Assets/zebra.png");
-    
+
     Shader mainShader = Shader("/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src/texture_vert.glsl", "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/src/texture_frag.glsl");
-    
+
     // Link the vertex attributes to the vertex shader
     // index: attr location, size: value, stride: length of vertex data, pointer: offset.
     GLint aPosAttr = glGetAttribLocation(mainShader.GetID(), "aPos");
     glVertexAttribPointer(aPosAttr, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(aPosAttr);
-    
+
     GLint aTexCoords = glGetAttribLocation(mainShader.GetID(), "aTexCoords");
     glVertexAttribPointer(aTexCoords, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(aTexCoords);
 
-    
+
     GLint aColor = glGetAttribLocation(mainShader.GetID(), "aColor");
     glVertexAttribPointer(aColor, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
     glEnableVertexAttribArray(aColor);
     
     glEnable(GL_DEPTH_TEST);
-    
+
    // Render loop
    while (!glfwWindowShouldClose(window))
    {
@@ -158,18 +162,25 @@ int main(int argc, char *argv[]) {
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
        mainShader.Use();
-       
+
        // Bind VAO
        glBindVertexArray(vao_id);
-       
+
        // Bind texture
        glActiveTexture(GL_TEXTURE0);
        glBindTexture(GL_TEXTURE_2D, tex_id);
        glEnable(GL_TEXTURE_2D);
+
+       // Transform geom
+       glm::mat4 trans = glm::mat4(1.0f);
+       trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+       trans = glm::translate(trans, glm::vec3(sin(glfwGetTime()), 0.0, 0.0));
+       GLint uTransform = glGetUniformLocation(mainShader.GetID(), "uTransform");
+       glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(trans));  // If shader program is not used, 1282 error.
        
        // Draw triangle
        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-       
+
        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
        // -------------------------------------------------------------------------------
        glfwSwapBuffers(window);

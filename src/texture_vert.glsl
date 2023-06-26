@@ -12,6 +12,7 @@ layout (location = 1) in vec2 aTexCoords;
 layout (location = 2) in vec3 aColor;
 
 uniform sampler2D uTexture;
+uniform mat4 uTransform;
 
 out vec4 vPos;
 out vec2 vTexCoords;
@@ -19,7 +20,7 @@ out vec3 vColor;
 
 void main()
 {
-    vec4 pos = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+    vec4 pos = uTransform * vec4(aPos, 1.0);
     
     // Set vertex position
     gl_Position = pos;
