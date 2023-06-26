@@ -9,7 +9,6 @@
 
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec2 aTexCoords;
-layout (location = 2) in vec3 aColor;
 
 uniform sampler2D uTexture;
 uniform mat4 uTransform;
@@ -28,5 +27,4 @@ void main()
     // Send to frag shader
     vPos = pos;
     vTexCoords = aTexCoords;
-    vColor = aColor;
 }

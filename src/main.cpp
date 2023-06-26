@@ -15,29 +15,57 @@
 
 using namespace Core;
 
-unsigned int vao_id, vbo_id, tex_id, ebo_id;
+unsigned int vao_id, vbo_id, tex_id;
 
 std::string root_folder = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner";
 
 void InitGeom(void) {
     
+    // Cube
     float vertices[] = {
-        // pos                  // tex coords   // color
-        -0.5f, -0.5f, 0.0f,     0.0f, 0.0f,     1.0f, 0.0f, 0.0f,   // bottom-left (red)
-        0.5f, -0.5f, 0.0f,      1.0f, 0.0f,     0.0f, 1.0f, 0.0f,   // bottom-right (green)
-        0.5f, 0.5f, 0.0f,       1.0f, 1.0f,     0.0f, 0.0f, 1.0f,   // top-right (blue)
-        -0.5f, 0.5f, 0.0f,      0.0f, 1.0f,     0.0f, 0.0f, 0.0f    // top-left (black)
-    };
+        // pos                  // tex
+        -0.5f, -0.5f, -0.5f,    0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,    1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,    1.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,    1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,    0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,    0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,    0.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,     1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,     1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,     1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,    0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,    0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,    1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,    1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,    0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,    0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,    0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,    1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,     1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,     1.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,     0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,     0.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,     0.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,     1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,    0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,     1.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,     1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,     1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,    0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,    0.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,    0.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,     1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,     1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,     1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,    0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,    0.0f, 1.0f
+        };
 
-    unsigned int indices[] = {
-        0, 1, 2,  // first Triangle
-        2, 3, 0   // second Triangle
-    };
-        
+
     // Generate array and buffers
     glGenVertexArrays(1, &vao_id);
     glGenBuffers(1, &vbo_id);               // vertex buffer, to store vertex data
-    glGenBuffers(1, &ebo_id);               // element buffer, to store indices
 
     // Bind and configure the vertex array object for later use
     glBindVertexArray(vao_id);
@@ -47,10 +75,6 @@ void InitGeom(void) {
     // Params: 1) Type of buffer, 2) Size of data, 3) Data, 4) How GPU should manage data
     glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    
-    // Copies index data to the element buffer
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_id);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 }
 
@@ -137,17 +161,12 @@ int main(int argc, char *argv[]) {
     // Link the vertex attributes to the vertex shader
     // index: attr location, size: value, stride: length of vertex data, pointer: offset.
     GLint aPosAttr = glGetAttribLocation(mainShader.GetID(), "aPos");
-    glVertexAttribPointer(aPosAttr, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(aPosAttr, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(aPosAttr);
 
     GLint aTexCoords = glGetAttribLocation(mainShader.GetID(), "aTexCoords");
-    glVertexAttribPointer(aTexCoords, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(aTexCoords, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(aTexCoords);
-
-
-    GLint aColor = glGetAttribLocation(mainShader.GetID(), "aColor");
-    glVertexAttribPointer(aColor, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
-    glEnableVertexAttribArray(aColor);
     
     glEnable(GL_DEPTH_TEST);
 
@@ -173,13 +192,14 @@ int main(int argc, char *argv[]) {
 
        // Transform geom
        glm::mat4 trans = glm::mat4(1.0f);
+       trans = glm::rotate(trans, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.0, 1.0, 0.0));
        trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
        trans = glm::translate(trans, glm::vec3(sin(glfwGetTime()), 0.0, 0.0));
        GLint uTransform = glGetUniformLocation(mainShader.GetID(), "uTransform");
        glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(trans));  // If shader program is not used, 1282 error.
        
        // Draw triangle
-       glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+       glDrawArrays(GL_TRIANGLES, 0, 36);
 
        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
        // -------------------------------------------------------------------------------
