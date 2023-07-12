@@ -7,11 +7,13 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <cmath>
-#include "shader-loader.h"
 #include "stb_image.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "shader-loader.h"
+#include "fly-by-camera.hpp"
 
 using namespace Core;
 
@@ -24,11 +26,8 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // Camera properties
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); // Temporary up vector - a trick used to get right.
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-float yaw, pitch = 0.0f;
-glm::vec3 direction = glm::vec3(0.0);
+FlyByCamera camera;
+
 bool firstMouse = true;
 float lastMouseX = SCR_WIDTH/2.0;
 float lastMouseY = SCR_HEIGHT/2.0;
@@ -168,7 +167,9 @@ int main(int argc, char *argv[]) {
     // Call after loading OpenGL context
     printf("OpenGL version is (%s)\n", glGetString(GL_VERSION));
 
-
+    // Init camera
+    camera = FlyByCamera(glm::vec3(0.0, 0.0, 3.0), glm::vec3(0.0, 1.0, 0.0));
+    
     InitGeom();
     
     InitTexture("/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner/Assets/zebra.png");
@@ -234,7 +235,7 @@ int main(int argc, char *argv[]) {
        float camZ = cos(glfwGetTime() * radius);
        
        
-       glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+       glm::mat4 view = camera.GetViewMatrix();
        mainShader.SetUniformMatrix4v("uView", view);
        
        for (int x = 0; x < 5; x++) {
@@ -283,13 +284,13 @@ void process_input(GLFWwindow* window) {
     float cameraSpeed = static_cast<float>(2.5 * deltaTime);
     //const float cameraSpeed = 5.0f * deltaTime;
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        cameraPos += cameraSpeed * cameraFront;
+        camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        cameraPos -= cameraSpeed * cameraFront;
+        camera.ProcessKeyboard(BACK, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+        camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+        camera.ProcessKeyboard(RIGHT, deltaTime);
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
@@ -300,33 +301,13 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
         lastMouseY = ypos;
         firstMouse = false;
     }
-    
-    float xoffset = xpos - lastMouseX;
-    float yoffset = lastMouseY - ypos; // y is reversed
-    
+
+    float deltaMouseX = xpos - lastMouseX;
+    float deltaMouseY = lastMouseY - ypos; // y is reversed
+
     lastMouseX = xpos;
     lastMouseY = ypos;
-    
-    const float sensitivity = 0.1f;
-    xoffset *= sensitivity;
-    yoffset *= sensitivity;
-    
-    yaw += xoffset;
-    pitch += yoffset;
-    
-    // Constrain camera rotation to avoid strange camera effects
-    // e.g. when direction vector is parallel to world up vector, the camera flips.
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch < -89.0f)
-        pitch = -89.0f;
-    
-    // Update direction
-    glm::vec3 front;
-    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    front.y = sin(glm::radians(pitch));
-    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    cameraFront = glm::normalize(front);
-    
-    printf("Camera front: (%f, %f, %f)\n", cameraFront.x, cameraFront.y, cameraFront.z);
+
+    // Update camera
+    camera.ProcessMouseInput(deltaMouseX, deltaMouseY, deltaTime);
 }
