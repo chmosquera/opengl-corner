@@ -19,6 +19,21 @@ unsigned int vao_id, vbo_id, tex_id;
 
 std::string root_folder = "/Users/chmosquera/2023/OpenGL_Corner/OpenGL_Corner";
 
+// settings
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+
+// Camera properties
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); // Temporary up vector - a trick used to get right.
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+float yaw, pitch = 0.0f;
+glm::vec3 direction = glm::vec3(0.0);
+bool firstMouse = true;
+float lastMouseX = SCR_WIDTH/2.0;
+float lastMouseY = SCR_HEIGHT/2.0;
+float deltaTime, lastTime = 0.0f;
+
 void InitGeom(void) {
     
     // Cube
@@ -111,11 +126,9 @@ void InitTexture(const char* path){
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-//void processInput(GLFWwindow *window);
+void process_input(GLFWwindow *window);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
-// settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
 
 int main(int argc, char *argv[]) {
     
@@ -129,7 +142,7 @@ int main(int argc, char *argv[]) {
        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     #endif
 
-   // glfw - window creation
+   // Create window (GLFW library)
    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL Corner", NULL, NULL);
    if (window == NULL)
    {
@@ -140,6 +153,10 @@ int main(int argc, char *argv[]) {
    glfwMakeContextCurrent(window);
    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+    // Set up mouse callback (GLFW library)
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    double mouseX, mouseY = 0.0f;
+    glfwSetCursorPosCallback(window, mouse_callback);
 
    // Glad - load all OpenGL function pointers
    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -169,12 +186,26 @@ int main(int argc, char *argv[]) {
     glEnableVertexAttribArray(aTexCoords);
     
     glEnable(GL_DEPTH_TEST);
+    
+    // world space positions of our cubes
+    glm::vec3 cubePositions[] = {
+        glm::vec3( 0.0f,  0.0f,  0.0f),
+        glm::vec3( 0.5f,  0.0f,  0.0f),
+        glm::vec3( 0.5f,  0.5f,  0.0f),
+        glm::vec3( 0.0f,  0.5f,  0.0f),
 
+    };
+    
+    
    // Render loop
    while (!glfwWindowShouldClose(window))
    {
+       // Calculate delta time
+       deltaTime = glfwGetTime() - lastTime;
+       lastTime = glfwGetTime();
+       
        // input
-//           processInput(window);
+       process_input(window);
 
        // render
        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -190,16 +221,39 @@ int main(int argc, char *argv[]) {
        glBindTexture(GL_TEXTURE_2D, tex_id);
        glEnable(GL_TEXTURE_2D);
 
-       // Transform geom
-       glm::mat4 trans = glm::mat4(1.0f);
-       trans = glm::rotate(trans, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.0, 1.0, 0.0));
-       trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
-       trans = glm::translate(trans, glm::vec3(sin(glfwGetTime()), 0.0, 0.0));
-       GLint uTransform = glGetUniformLocation(mainShader.GetID(), "uTransform");
-       glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(trans));  // If shader program is not used, 1282 error.
        
-       // Draw triangle
-       glDrawArrays(GL_TRIANGLES, 0, 36);
+       glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+       mainShader.SetUniformMatrix4v("uProj", proj);
+       
+       // ------------------------
+       // Update camera/view space
+       // ------------------------
+       // rotating camera in circle (trig math)
+       const float radius = 10.0f;
+       float camX = sin(glfwGetTime() * radius);
+       float camZ = cos(glfwGetTime() * radius);
+       
+       
+       glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+       mainShader.SetUniformMatrix4v("uView", view);
+       
+       for (int x = 0; x < 5; x++) {
+           for (int y = 0; y < 5; y++) {
+               for (int z = 0; z < 5; z++) {
+                   // Transform geom
+                   glm::vec3 offset = glm::vec3(-2.5, -2.5, 2.5);
+                   glm::vec3 objPos = glm::vec3(x, y, z) + offset;
+                   objPos *= 2.0f;
+                   glm::mat4 model = glm::mat4(1.0f);
+                   model = glm::scale(model, glm::vec3(0.25));
+                   model = glm::translate(model, objPos);
+                   mainShader.SetUniformMatrix4v("uModel", model);
+                   
+                   // Draw triangle
+                   glDrawArrays(GL_TRIANGLES, 0, 36);
+               }
+           }
+       } 
 
        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
        // -------------------------------------------------------------------------------
@@ -219,4 +273,60 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
+}
+
+void process_input(GLFWwindow* window) {
+
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+
+    float cameraSpeed = static_cast<float>(2.5 * deltaTime);
+    //const float cameraSpeed = 5.0f * deltaTime;
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        cameraPos += cameraSpeed * cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        cameraPos -= cameraSpeed * cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+}
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
+    
+    if (firstMouse)
+    {
+        lastMouseX = xpos;
+        lastMouseY = ypos;
+        firstMouse = false;
+    }
+    
+    float xoffset = xpos - lastMouseX;
+    float yoffset = lastMouseY - ypos; // y is reversed
+    
+    lastMouseX = xpos;
+    lastMouseY = ypos;
+    
+    const float sensitivity = 0.1f;
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+    
+    yaw += xoffset;
+    pitch += yoffset;
+    
+    // Constrain camera rotation to avoid strange camera effects
+    // e.g. when direction vector is parallel to world up vector, the camera flips.
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+    
+    // Update direction
+    glm::vec3 front;
+    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    front.y = sin(glm::radians(pitch));
+    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    cameraFront = glm::normalize(front);
+    
+    printf("Camera front: (%f, %f, %f)\n", cameraFront.x, cameraFront.y, cameraFront.z);
 }

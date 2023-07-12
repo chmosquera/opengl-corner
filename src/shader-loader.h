@@ -13,6 +13,9 @@
 #endif
 
 #include <glad/glad.h> // Include OpenGL headers
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <string>
 #include <fstream>
@@ -37,6 +40,7 @@ namespace Core {
         void SetUniform1i(const std::string &name, int value);
         void SetUniform1f(const std::string &name, float value);
         void SetUniform4f(const std::string &name, float x, float y, float z, float w);
+        void SetUniformMatrix4v(const std::string &name, glm::mat4 m);
         
     private:
         unsigned int m_id;

@@ -110,6 +110,11 @@ void Shader::Use() {
     glUseProgram(m_id);
 }
 
+/*
+ Set uniform values for this shader program.
+ If shader program is not used via glUseProgram call, error 1282 occurs.
+ */
+
 void Shader::SetUniformBool(const std::string &name, bool value) {
     auto loc = glGetUniformLocation(m_id, name.c_str());   // Uniform name is defined in shader
     if (loc == -1) {
@@ -140,4 +145,13 @@ void Shader::SetUniform4f(const std::string &name, float x, float y, float z, fl
         printf("ERROR: Could not find uniform location in shader program '%d' (GL error code: %d)\n", m_id, glGetError());
     }
     glUniform4f(loc, x, y, z, w);
+}
+
+void Shader::SetUniformMatrix4v(const std::string &name, glm::mat4 m) {
+    auto loc = glGetUniformLocation(m_id, name.c_str());   // Uniform name is defined in shader
+    if (loc == -1) {
+        printf("ERROR: Could not find uniform location in shader program '%d' (GL error code: %d)\n", m_id, glGetError());
+    }
+    
+    glUniformMatrix4fv(loc, 1, false, glm::value_ptr(m));
 }
